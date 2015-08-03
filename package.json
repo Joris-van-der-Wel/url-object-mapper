@@ -1,0 +1,62 @@
+{
+  "name": "url-object-mapper",
+  "version": "1.0.0",
+  "description": "Map url templates to objects and object templates to urls",
+  "main": "lib/Mapper.js",
+  "scripts": {
+    "test": "istanbul cover test/index.js",
+    "posttest": "jshint lib test && jscs lib test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Joris-van-der-Wel/url-object-mapper.git"
+  },
+  "keywords": [
+    "url",
+    "object",
+    "mapper",
+    "map",
+    "router"
+  ],
+  "author": "Joris van der Wel <joris@jorisvanderwel.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Joris-van-der-Wel/url-object-mapper/issues"
+  },
+  "homepage": "https://github.com/Joris-van-der-Wel/url-object-mapper#readme",
+  "devDependencies": {
+    "istanbul": "^0.3.17",
+    "jscs": "^1.13.1",
+    "jsdoc-to-markdown": "^1.1.1",
+    "jshint": "^2.8.0",
+    "tape": "^4.0.0"
+  },
+  "jshintConfig": {
+    "esnext": true,
+    "node": true,
+    "bitwise": true,
+    "camelcase": true,
+    "curly": true,
+    "eqeqeq": true,
+    "forin": true,
+    "freeze": true,
+    "immed": true,
+    "indent": 8,
+    "latedef": true,
+    "newcap": true,
+    "noarg": true,
+    "nonbsp": true,
+    "nonew": true,
+    "quotmark": "single",
+    "undef": true,
+    "unused": "vars",
+    "strict": true,
+    "laxbreak": true,
+    "varstmt": true
+  },
+  "dependencies": {
+    "clone": "^1.0.2",
+    "lodash.escaperegexp": "^3.0.1",
+    "object-path": "^0.9.2"
+  }
+}
