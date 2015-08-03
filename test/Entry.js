@@ -86,5 +86,25 @@ test('toURL: invalid placeholder value', function(t) {
         t.end();
 });
 
+test('fromURL: url decoding', function(t) {
+        const entry = new Entry('/foo/{1}', ['foo', 'bar']);
+        t.deepEqual(entry.fromURL('/foo/bar%20baz'), ['foo', 'bar baz']);
+        t.end();
+});
+
+test('toURL: url encoding', function(t) {
+        const entry = new Entry('/foo/{1}', ['foo', 'bar']);
+        t.equal(entry.toURL(['foo', 'bar baz']), '/foo/bar%20baz');
+        t.end();
+});
+
+test('fromURL: redundant encoding should be normalized before matching', function(t) {
+        const entry = new Entry('/foo', ['foo']);
+        t.deepEqual(entry.fromURL('/f%6f%6F'), ['foo']);
+        const entry2 = new Entry('/f%6f%6F', ['foo']);
+        t.deepEqual(entry2.fromURL('/foo'), ['foo']);
+        t.end();
+});
+
 // todo query string
 

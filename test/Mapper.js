@@ -82,3 +82,28 @@ test('addEntry: invalid entry', function(t) {
 
         t.end();
 });
+
+test('fromURL: redundant encoding should be normalized before matching', function(t) {
+        const mapper = new Mapper();
+        mapper.add('/foo', ['foo']);
+        mapper.add('/b%61r', ['bar']);
+
+        t.deepEqual(mapper.fromURL('/f%6f%6F'), ['foo']);
+        t.deepEqual(mapper.fromURL('/bar'), ['bar']);
+        t.end();
+});
+
+test('fromURL: no normalization should be performed if an option disables this feature', function(t) {
+        const mapper = new Mapper();
+        mapper.add('/foo', ['foo']);
+        mapper.add('/b%61r', ['bar']);
+        mapper.add('/b%61z', ['baz'], {normalize: false});
+        // the url is also normalized during add(), the fromURL() option has no effect on this
+
+        t.deepEqual(mapper.fromURL('/f%6f%6F', {normalize: false}), null);
+        t.deepEqual(mapper.fromURL('/bar', {normalize: false}), ['bar']);
+        t.deepEqual(mapper.fromURL('/b%61r', {normalize: false}), null);
+        t.deepEqual(mapper.fromURL('/baz', {normalize: false}), null);
+        t.deepEqual(mapper.fromURL('/b%61z', {normalize: false}), ['baz']);
+        t.end();
+});
