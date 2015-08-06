@@ -1,6 +1,6 @@
 {
   "name": "url-object-mapper",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Map url templates to objects and object templates to urls",
   "main": "lib/Mapper.js",
   "browser": "es5/Mapper.js",
