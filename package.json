@@ -3,9 +3,11 @@
   "version": "1.0.1",
   "description": "Map url templates to objects and object templates to urls",
   "main": "lib/Mapper.js",
+  "browser": "es5/Mapper.js",
   "scripts": {
     "test": "istanbul cover test/index.js",
-    "posttest": "jshint lib test && jscs lib test"
+    "posttest": "jshint lib test && jscs lib test",
+    "prepublish": "traceur --dir lib es5 --modules commonjs"
   },
   "repository": {
     "type": "git",
@@ -29,7 +31,8 @@
     "jscs": "^1.13.1",
     "jsdoc-to-markdown": "^1.1.1",
     "jshint": "^2.8.0",
-    "tape": "^4.0.0"
+    "tape": "^4.0.0",
+    "traceur": "0.0.91"
   },
   "jshintConfig": {
     "esnext": true,
